@@ -16,7 +16,11 @@ class ArticlesViewModel(private val newsService: NewsService) : ViewModel() {
     private val _articles = MutableLiveData<List<Article>>()
     val articles = _articles
 
-    fun getArticles() {
+    init {
+        getArticles()
+    }
+
+    private fun getArticles() {
         viewModelScope.launch(Dispatchers.IO) {
             val data = newsService.topHeadlines("us")
             _articles.postValue(data.articles)

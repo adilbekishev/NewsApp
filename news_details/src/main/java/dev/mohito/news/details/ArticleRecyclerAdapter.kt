@@ -11,10 +11,6 @@ import dev.mohito.news.news_api.Article
 class ArticleRecyclerAdapter(private val articles: List<Article>) :
     RecyclerView.Adapter<ArticleRecyclerAdapter.ViewHolder>() {
 
-    init {
-        Log.d("ggg", "here: ")
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -28,7 +24,6 @@ class ArticleRecyclerAdapter(private val articles: List<Article>) :
     inner class ViewHolder(private val binding: ItemArticleBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Article) {
-            Toast.makeText(binding.content.context, "created", Toast.LENGTH_SHORT).show()
             binding.apply {
                 title.text = item.title
                 content.text = item.content ?: "Null comes here"
